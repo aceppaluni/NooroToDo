@@ -16,8 +16,8 @@ This is the backend service for the **TodoApp**. It provides a REST API to manag
 Clone the repo and install dependencies:
 
 ```bash
-git clone <your-repo-url>
-cd backend
+git clone https://github.com/aceppaluni/NooroToDo.git
+cd todo-backend
 npm install
 ```
 
