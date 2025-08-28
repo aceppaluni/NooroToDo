@@ -26,7 +26,7 @@ export default function EditTaskPage() {
         await API.put(`/tasks/${id}`, { title, color, completed });
         router.push("/");
         router.refresh();
-    }
+    };
     
     return (
         <div>
@@ -54,5 +54,5 @@ export default function EditTaskPage() {
                 <button type="submit" className="bg-green-500 text-white px-4 py-2 rounded">Update </button>
             </form>
         </div>
-    )
+    );
 }

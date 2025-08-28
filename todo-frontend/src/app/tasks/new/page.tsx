@@ -5,7 +5,6 @@ import API from "./../../lib/api";
 import ColorPicker from "../../components/ColorPicker";
 import BackButton from "@/app/components/BackButton";
 import Header from "@/app/components/Header";
-import Button from '../../components/Button';
 
 export default function NewTaskPage() {
     const [title, setTitle] = useState("");
@@ -17,9 +16,7 @@ export default function NewTaskPage() {
         await API.post("/tasks", { title, color});
         router.push("/");
         router.refresh();
-        
-    }
-
+    };
 
     return (
         <div>

@@ -60,7 +60,16 @@ export default function Home() {
      
       <div className="m-8">
         {tasks.map((task) => (
-          <TaskCard key={task.id} task={task} onDelete={() => setTasks(prev => prev.filter(t => t.id !== task.id))} />
+          <TaskCard 
+            key={task.id} 
+            task={task} 
+            onDelete={() => setTasks(prev => prev.filter(t => t.id !== task.id))} 
+            onToggle={(updated) =>
+                setTasks((prev) =>
+                  prev.map((t) => (t.id === updated.id ? updated : t))
+                )
+              }
+            />
         ))}
         {tasks.length === 0 && (
           <div className="flex flex-col items-center gap-2">
@@ -71,5 +80,5 @@ export default function Home() {
         )}
       </div>
     </div>
-  )
+  );
 }

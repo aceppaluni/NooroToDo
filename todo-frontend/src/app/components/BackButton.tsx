@@ -3,8 +3,8 @@ import { useRouter } from "next/navigation";
 import React from "react";
 
 type Props = {
-  label?: string; // optional custom label
-  className?: string; // optional extra styling
+  label?: string; 
+  className?: string; 
 };
 
 export default function BackButton({ label = "Back", className = "" }: Props) {
