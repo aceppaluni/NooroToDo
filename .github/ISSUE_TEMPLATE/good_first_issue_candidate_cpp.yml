@@ -1,121 +1,80 @@
 name: Good First Issue Candidate (C++)
-description: Propose a candidate issue that may be suitable as a Good First Issue (C++)
-title: "[GFI Candidate][C++]: "
-labels: ["C++"]
+description: Propose a potential Good First Issue (candidate) for the Hiero C++ SDK
+title: "[Good First Issue Candidate][C++]:"
+labels: ["Good First Issue Candidate", "C++"]
 assignees: []
 body:
-  - type: markdown
+  - type: textarea
+    id: intro-gfi-candidate
     attributes:
+      label: ⚠️ Good First Issue — Candidate
       value: |
-        ---
-        ## Maintainer Instructions (Not shown in final issue)
-
-        This template is for proposing **Good First Issue candidates**, not guaranteed GFIs.
-
-        - Markdown sections are **only visible to the form-filler**
-        - Anything intended for contributors **must go in textarea fields**
-        - Triage or maintainers may later apply the `good first issue` label
-
-        Use this form to describe a **small, well-scoped, beginner-friendly task**.
-        ---
-
-  - type: markdown
-    attributes:
-      value: |
-        ## What makes a good GFI candidate?
-        - Narrow, self-contained change
-        - Minimal architectural knowledge required
-        - Easy to explain with links and examples
-        - Safe refactors, docs, or small test improvements
-
-        Avoid:
-        - New core features
-        - Large refactors
-        - Multi-subsystem changes
-        - Deep protocol or SDK knowledge
+        > This issue is **not yet a confirmed Good First Issue**.
+        > It is being evaluated for suitability and may require
+        > clarification or refinement before it is ready to be picked up.
+        >
+        > Please wait for maintainer confirmation before starting work.
+        >
+        > Maintainers can read more about Good First Issues:
+        > docs/maintainers/good_first_issue_candidate_guidelines.md
+    validations:
+      required: false
 
   - type: textarea
     id: intro
     attributes:
-      label: 🆕🐥 Who this issue is for
-      description: This text will appear in the final issue.
+      label: 🆕🐥 First Timers Only
+      description: Who is this issue for?
       value: |
-        👋 **New contributors welcome!**
+        This issue is intended for contributors who are new or have made minimal contributions to the **Hiero C++ SDK**.
 
-        This issue is intended as a **Good First Issue candidate** for contributors who are new to the **Hiero C++ SDK** or open source in general.
-
-        You do not need deep knowledge of the codebase to get started. The goal is to help you learn the workflow, tooling, and contribution process while making a meaningful improvement.
-
+        Creating a pull request (PR) can be a major barrier for new contributors.
+        Issues labeled as **Good First Issue** are designed to help you learn the
+        codebase, tooling, and contribution workflow while making a meaningful improvement.
     validations:
-      required: true
+      required: false
 
-  - type: textarea
-    id: contribution_guide
+  - type: markdown
     attributes:
-      label: 🛠 How to contribute
-      description: Step-by-step instructions shown to contributors.
       value: |
-        ### Contribution Workflow
-
-        1. **Fork the repository**
-           Click the `Fork` button on GitHub to create your own copy.
-
-        2. **Clone your fork**
-        ```bash
-        git clone https://github.com/<your-username>/<repo>.git
-        cd <repo>
-        ```
-
-        3. **Add the upstream repository**
-        ```bash
-        git remote add upstream https://github.com/hiero-ledger/<repo>.git
-        ```
-
-        4. **Sync your local `main` branch**
-        ```bash
-        git pull upstream main
-        ```
-
-        5. **Create a feature branch**
-        ```bash
-        git checkout -b my-feature
-        ```
-
-        6. **Make your changes**, then stage them
-        ```bash
-        git add <file>
-        ```
-
-        7. **Commit with sign-off and GPG signing**
-        ```bash
-        git commit --signoff -S -m "Your commit message"
-        ```
-
-        8. **Push your branch**
-        ```bash
-        git push origin my-feature
-        ```
-
-        9. **Open a Pull Request**
-        - Reference this issue in the PR description
-        - Keep commits small and focused
-        - Ensure tests pass
-
-    validations:
-      required: true
+        > [!IMPORTANT]
+        > ### 📋 Good First Issue Candidate Guidelines (C++)
+        >
+        > **What we generally consider good first issue candidates:**
+        > - Narrow refactors in existing C++ code
+        > - Improving readability or separation of concerns
+        > - Const-correctness and type safety
+        > - Small documentation improvements (Doxygen, inline comments)
+        > - Targeted additions to existing tests
+        >
+        > **What we generally do NOT consider good first issue candidates:**
+        > - New core features
+        > - New transaction types
+        > - Large architectural changes
+        > - Changes requiring deep knowledge of multiple subsystems
 
   - type: textarea
     id: issue
     attributes:
       label: 👾 Description of the issue
-      description: Clearly describe the problem in beginner-friendly language.
+      description: |
+        Describe the issue in a way that is understandable to new contributors.
+        Do not assume prior knowledge of the codebase or Hiero.
+        Add links to relevant code or documentation where possible.
       value: |
-        ## 👾 Example (C++)
+        Edit here. Example provided below.
+    validations:
+      required: true
 
-        The C++ implementation of `TokenAssociateTransaction` currently combines multiple responsibilities:
-        parsing protobuf data, validating input, and constructing transaction objects.
+  - type: markdown
+    attributes:
+      value: |
+        <!-- Example for problem (hidden in submission) -->
+        ## 👾 Description of the issue — Example (C++)
 
-        Example code:
+        The C++ implementation of `TokenAssociateTransaction` currently combines
+        protobuf parsing, validation, and object construction in a single method,
+        making it difficult for new contributors to follow.
 
         ```cpp
         void TokenAssociateTransaction::initFromSourceTransactionBody()
@@ -141,44 +100,55 @@ body:
         }
         ```
 
-        While correct, this structure can be difficult for new contributors to follow.
-
-    validations:
-      required: true
-
   - type: textarea
     id: solution
     attributes:
       label: 💡 Proposed Solution
-      description: Describe a possible approach. This does not need to be perfect.
+      description: Describe the approach to solving the issue.
       value: |
-        Refactor `TokenAssociateTransaction` to separate responsibilities:
-
-        - Extract protobuf parsing into a helper function
-        - Use clearer method names for intent
-        - Keep external behavior unchanged
-
-        This improves readability and maintainability without introducing new features.
-
+        Edit here. Example provided below.
     validations:
       required: true
+
+  - type: markdown
+    attributes:
+      value: |
+        <!-- Example for the solution (hidden in submission) -->
+        ## 💡 Solution — Example (C++)
+
+        Refactor the transaction implementation by extracting protobuf parsing
+        into clearly named helper functions while keeping external behavior unchanged.
 
   - type: textarea
     id: implementation
     attributes:
       label: 👩‍💻 Implementation Steps
-      description: Break the work into concrete, beginner-friendly steps.
+      description: Break down the technical steps required to solve the issue.
       value: |
-        - [ ] Identify parsing logic in `TokenAssociateTransaction`
-        - [ ] Extract parsing into `parseTokenAssociateBody()`
-        - [ ] Keep validation and submission logic unchanged
-        - [ ] Run existing tests
-        - [ ] Update documentation or comments if needed
-
-        Example helpers:
-        ```cpp
-        void parseTokenAssociateBody(const proto::TokenAssociateTransactionBody& body);
-        ```
-
+        Edit here. Example provided below.
     validations:
       required: true
+
+  - type: markdown
+    attributes:
+      value: |
+        <!-- Example implementation (hidden in submission) -->
+        ### 👩‍💻 Implementation — Example (C++)
+
+        - [ ] Identify parsing logic in `TokenAssociateTransaction`
+        - [ ] Extract parsing into helper methods
+        - [ ] Ensure existing tests pass
+        - [ ] Update documentation if needed
+
+  - type: textarea
+    id: acceptance-criteria
+    attributes:
+      label: ✅ Acceptance Criteria
+      value: |
+        - [ ] All commits are DCO and GPG signed
+        - [ ] All tests pass
+        - [ ] The issue is fully addressed
+        - [ ] Code review feedback has been resolved
+    validations:
+      required: true
+
